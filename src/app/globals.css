@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark light;
+}
+
+body {
+  @apply bg-base-900 text-white antialiased;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(78, 212, 255, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(139, 92, 246, 0.18), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(255, 107, 214, 0.14), transparent 45%),
+    linear-gradient(180deg, rgba(6, 7, 18, 0.92) 0%, rgba(12, 16, 34, 1) 30%, rgba(6, 7, 18, 0.92) 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body.light {
+  @apply bg-white text-neutral-900;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(78, 212, 255, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(139, 92, 246, 0.18), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(255, 107, 214, 0.14), transparent 45%),
+    linear-gradient(180deg, rgba(248, 250, 255, 0.98) 0%, rgba(224, 233, 255, 1) 30%, rgba(241, 246, 255, 0.98) 100%);
+}
+
+.glass-panel {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-glass;
+}
+
+.glass-panel.light {
+  @apply bg-white/60 border-white/40 text-neutral-900;
+}
+
+.aurora {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  background: conic-gradient(from 180deg at 50% 50%, rgba(78, 212, 255, 0.35), rgba(139, 92, 246, 0.35), rgba(255, 107, 214, 0.35), rgba(78, 212, 255, 0.35));
+  filter: blur(120px);
+  opacity: 0.65;
+  animation: auroraMove 16s ease-in-out infinite;
+}
+
+@keyframes auroraMove {
+  0% {
+    transform: rotate(0deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(12deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1.05);
+  }
+}
+
+.parallax-gradient {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 55%);
+  mix-blend-mode: screen;
+}
+
+.noise-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAgEBAS4qBKwAAAAASUVORK5CYII=");
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(6, 7, 18, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(78, 212, 255, 0.85), rgba(139, 92, 246, 0.7));
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(255, 107, 214, 0.85), rgba(78, 212, 255, 0.7));
+}
